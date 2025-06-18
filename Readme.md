@@ -1,61 +1,66 @@
-# Analyse des Genres sur Wikipedia
+# Analyse des Contributions Genrées sur Wikipédia
 
-## Description
+Ce projet a pour objectif d’analyser les contributions sur Wikipédia selon le genre des contributeurs (hommes, femmes, personnes transgenres), en étudiant les thématiques éditées, la répartition géographique, les langues utilisées, et l’évolution temporelle. Il vise également à projeter les tendances futures (2025–2030) à l’aide de modèles prédictifs.
 
-Ce projet vise à analyser la répartition et l'évolution des contributions sur Wikipedia en fonction du genre des contributeurs (hommes, femmes, personnes transgenres). Wikipedia, en tant que plateforme ouverte, aspire à représenter la société dans sa diversité. Cependant, des différences notables persistent dans la participation en fonction du genre et des dimensions spatio-temporelles. Ce projet cherche à comprendre ces écarts, en explorant les contributions des utilisateurs selon le genre, la localisation géographique et les sujets modifiés. L'objectif est de révéler les tendances dans les contributions à Wikipedia à travers différentes langues et régions.
+## Objectifs
 
-Pour atteindre cet objectif, le projet utilise des bibliothèques Python telles que **wikipedia-api** pour accéder aux informations des contributeurs, **Pandas** pour structurer et analyser les données, **Requests** pour les appels à l'API Wikipedia, et **Re** pour extraire des informations à partir du contenu des pages.
+- Identifier les déséquilibres dans la participation selon le genre
+- Comprendre les préférences éditoriales en fonction du genre
+- Étudier l’évolution des contributions dans le temps et selon la localisation
+- Anticiper les tendances futures via des modèles d’apprentissage automatique
 
-## Fonctionnalités
+## Méthodologie
 
-- **Collecte des Données** : Utilisation de l'API Wikipedia pour récupérer les informations des contributeurs par genre à partir de catégories spécifiques telles que "Female Wikipedians", "Male Wikipedians" et "Transgender Wikipedians".
-- **Extraction de la Localisation** : Extraction des informations de localisation à partir des pages utilisateur de Wikipedia en utilisant des expressions régulières pour détecter les mentions géographiques.
-- **Analyse des Contributions** : Collecte des contributions des utilisateurs par genre, langue, et région, pour évaluer la participation de chaque genre sur Wikipedia.
-- **Visualisation des Résultats** : Les données collectées sont agrégées et visualisées pour comprendre les tendances en matière de participation et de localisation des contributeurs.
+Les données ont été collectées via l’API Wikipedia en ciblant trois catégories : "Male Wikipedians", "Female Wikipedians", "Transgender Wikipedians". Un enrichissement a été effectué via DBpedia pour catégoriser les articles. Le traitement comprend :
 
-## Prérequis
+- Nettoyage et filtrage des données
+- Extraction des localisations (pycountry, geonamescache)
+- Vectorisation des titres (TF-IDF)
+- Clustering thématique (KMeans)
+- Modélisation des tendances (régression linéaire, Random Forest, XGBoost)
+
+## Technologies utilisées
 
 - Python 3.x
-- Bibliothèques Python : wikipedia-api, Pandas, Requests, Re
+- Bibliothèques : wikipedia-api, pandas, numpy, scikit-learn, xgboost, matplotlib, seaborn, plotly, pycountry, requests, re
 
-## Installation et Lancement
+## Fichiers principaux
 
-1. Clonez ce dépôt sur votre machine locale :
-   ```sh
-   git clone <URL-du-dépôt>
-   ```
-2. Accédez au dossier du projet :
-   ```sh
-   cd chemin/vers/le/projet
-   ```
-3. Installez les dépendances requises :
-   ```sh
+- `code.ipynb` : notebook principal d’analyse, enrichissement, modélisation
+- `wikipedia_contributions.csv` : jeu de données enrichi
+- `Article_scientifique.pdf` : article scientifique détaillé du projet
+- `Presentation.pdf` : support de présentation des résultats
+- `requirements.txt` : dépendances du projet
+
+## Instructions d'exécution
+
+1. Cloner le dépôt :
+   git clone https://github.com/votre-utilisateur/analyse-genree-wikipedia.git
+
+2. Se rendre dans le dossier :
+   cd analyse-genree-wikipedia
+
+3. Installer les dépendances :
    pip install -r requirements.txt
-   ```
-4. Exécutez le script principal pour lancer la collecte des données et l'analyse :
-   ```sh
-   python gender_analysis_wikipedia.py
-   ```
 
-## Objectifs du Projet
+4. Lancer le notebook :
+   jupyter notebook code.ipynb
 
-1. **Création d'une Collection de Données** : Collecter des données à partir de Wikipedia concernant les contributeurs par genre, localisation, et langue.
-2. **Prétraitement des Données** : Identifier et structurer les aspects tels que le genre, la localisation, les sujets et les langues.
-3. **Agrégation des Données** : Analyser les données collectées en fonction des dimensions identifiées (genre, localisation, sujets).
-4. **Visualisation des Résultats** : Fournir une représentation visuelle des contributions par genre, localisation, et sujets modifiés.
+## Résultats synthétiques
 
-## Structure du Projet
+- 58,9 % des contributions sont masculines, 31,2 % féminines, 9,85 % transgenres
+- Les hommes éditent majoritairement des sujets techniques, militaires et scientifiques
+- Les femmes privilégient les domaines culturels, sociaux et éducatifs
+- Les personnes transgenres contribuent davantage aux sujets liés aux droits LGBTQ+
+- Les contributions féminines et transgenres progressent, mais la tendance reste dominée par les hommes
+- La régression linéaire est le modèle prédictif le plus performant (R² > 0.89)
 
-- **gender_analysis_wikipedia.py** : Script principal pour la collecte et l'analyse des données Wikipedia.
-- **wikipedia_contributions_with_geography5.csv** : Fichier CSV généré contenant les contributions avec les informations de localisation et de genre.
-- **requirements.txt** : Liste des bibliothèques nécessaires pour exécuter le projet.
+## Auteurs
 
-## Collaborateurs
-
-- Diallo Fatoumata
-- Ismael Sow
+- Ismael SOW
+- Fatoumata DIALLO
+- Tuteur : Marc SPANIOL
 
 ## Licence
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
+Ce projet est distribué sous licence MIT. Voir le fichier `LICENSE` pour plus d'informations.
