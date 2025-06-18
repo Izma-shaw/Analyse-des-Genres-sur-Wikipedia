@@ -52,7 +52,7 @@ Pour atteindre cet objectif, le projet utilise des bibliothèques Python telles 
 
 ## Collaborateurs
 
-- Arafat Feical Idriss
+- Diallo Fatoumata
 - Ismael Sow
 
 ## Licence
